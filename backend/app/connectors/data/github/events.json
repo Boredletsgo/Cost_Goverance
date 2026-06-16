@@ -1,0 +1,4 @@
+[
+  {"external_id": "gh-dep-1487", "kind": "deploy", "severity": "info", "title": "Merged PR #1487: orders reporting endpoint", "description": "orders-service v2.4.0 — adds /reports endpoint querying orders-db without a supporting index.", "resource_id": "repo/orders-service", "occurred_at": "2026-06-14T01:55:00Z", "meta": {"pr": 1487, "author": "dev-rahul", "files_changed": 14}},
+  {"external_id": "gh-dep-1492", "kind": "deploy", "severity": "info", "title": "Merged PR #1492: hotfix add covering index", "description": "orders-service v2.4.1 — adds ix_orders_report and statement timeout.", "resource_id": "repo/orders-service", "occurred_at": "2026-06-15T16:30:00Z", "meta": {"pr": 1492, "author": "dev-rahul"}}
+]

@@ -1,0 +1,8 @@
+[
+  {"external_id": "i-0a1b2c", "name": "api-gateway-asg", "type": "EC2Instance", "region": "us-east-1", "status": "running", "monthly_cost": 6300.0, "tags": {"env": "prod", "team": "api"}, "attributes": {"instance_type": "m6i.2xlarge", "count": 6, "avg_cpu_pct": 18.0}},
+  {"external_id": "i-idle-77", "name": "legacy-jenkins", "type": "EC2Instance", "region": "us-east-1", "status": "running", "monthly_cost": 540.0, "tags": {"env": "dev"}, "attributes": {"instance_type": "m6i.large", "avg_cpu_pct": 1.2, "idle": true}},
+  {"external_id": "rds-analytics", "name": "analytics-pg", "type": "RDSInstance", "region": "us-east-1", "status": "available", "monthly_cost": 3870.0, "tags": {"env": "prod", "team": "data"}, "attributes": {"engine": "postgres", "class": "db.r6g.2xlarge", "avg_conn": 14, "max_conn": 800}},
+  {"external_id": "bkt-prod-logs", "name": "prod-logs", "type": "S3Bucket", "region": "us-east-1", "status": "active", "monthly_cost": 1740.0, "tags": {"env": "prod"}, "attributes": {"size_gb": 9200, "lifecycle_policy": false, "standard_tier_pct": 100}},
+  {"external_id": "eip-unused-09", "name": "old-nat-eip", "type": "ElasticIP", "region": "us-east-1", "status": "unassociated", "monthly_cost": 3.6, "tags": {}, "attributes": {"associated": false}},
+  {"external_id": "ebs-orphan-21", "name": "detached-vol-21", "type": "EBSVolume", "region": "us-east-1", "status": "available", "monthly_cost": 80.0, "tags": {}, "attributes": {"size_gb": 1000, "type": "gp3", "attached": false}}
+]

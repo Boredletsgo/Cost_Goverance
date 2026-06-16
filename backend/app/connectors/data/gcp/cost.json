@@ -1,0 +1,17 @@
+[
+  {"date": "2026-06-11", "service": "Compute Engine", "resource_id": "gce-ml-train", "amount": 180.20, "currency": "USD"},
+  {"date": "2026-06-11", "service": "Cloud Storage", "resource_id": "gcs-datasets", "amount": 41.30, "currency": "USD"},
+  {"date": "2026-06-11", "service": "BigQuery", "resource_id": "bq-analytics", "amount": 72.50, "currency": "USD"},
+  {"date": "2026-06-12", "service": "Compute Engine", "resource_id": "gce-ml-train", "amount": 182.60, "currency": "USD"},
+  {"date": "2026-06-12", "service": "Cloud Storage", "resource_id": "gcs-datasets", "amount": 42.10, "currency": "USD"},
+  {"date": "2026-06-12", "service": "BigQuery", "resource_id": "bq-analytics", "amount": 70.80, "currency": "USD"},
+  {"date": "2026-06-13", "service": "Compute Engine", "resource_id": "gce-ml-train", "amount": 181.40, "currency": "USD"},
+  {"date": "2026-06-13", "service": "Cloud Storage", "resource_id": "gcs-datasets", "amount": 42.80, "currency": "USD"},
+  {"date": "2026-06-13", "service": "BigQuery", "resource_id": "bq-analytics", "amount": 145.60, "currency": "USD"},
+  {"date": "2026-06-14", "service": "Compute Engine", "resource_id": "gce-ml-train", "amount": 183.10, "currency": "USD"},
+  {"date": "2026-06-14", "service": "Cloud Storage", "resource_id": "gcs-datasets", "amount": 43.40, "currency": "USD"},
+  {"date": "2026-06-14", "service": "BigQuery", "resource_id": "bq-analytics", "amount": 198.30, "currency": "USD"},
+  {"date": "2026-06-15", "service": "Compute Engine", "resource_id": "gce-ml-train", "amount": 184.00, "currency": "USD"},
+  {"date": "2026-06-15", "service": "Cloud Storage", "resource_id": "gcs-datasets", "amount": 44.00, "currency": "USD"},
+  {"date": "2026-06-15", "service": "BigQuery", "resource_id": "bq-analytics", "amount": 221.70, "currency": "USD"}
+]

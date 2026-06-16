@@ -1,0 +1,8 @@
+[
+  {"date": "2026-06-13", "service": "Node Pool", "resource_id": "np-general", "amount": 96.40, "currency": "USD"},
+  {"date": "2026-06-13", "service": "Node Pool", "resource_id": "np-batch", "amount": 58.20, "currency": "USD"},
+  {"date": "2026-06-14", "service": "Node Pool", "resource_id": "np-general", "amount": 97.10, "currency": "USD"},
+  {"date": "2026-06-14", "service": "Node Pool", "resource_id": "np-batch", "amount": 59.00, "currency": "USD"},
+  {"date": "2026-06-15", "service": "Node Pool", "resource_id": "np-general", "amount": 96.80, "currency": "USD"},
+  {"date": "2026-06-15", "service": "Node Pool", "resource_id": "np-batch", "amount": 58.70, "currency": "USD"}
+]

@@ -1,0 +1,6 @@
+[
+  {"external_id": "gce-ml-train", "name": "ml-training-pool", "type": "ComputeInstance", "region": "us-central1", "status": "running", "monthly_cost": 5460.0, "tags": {"env": "prod", "team": "ml"}, "attributes": {"machine_type": "n2-standard-16", "gpu": "none", "avg_cpu_pct": 64.0}},
+  {"external_id": "gcs-datasets", "name": "datasets-bucket", "type": "StorageBucket", "region": "us-central1", "status": "active", "monthly_cost": 1290.0, "tags": {"env": "prod"}, "attributes": {"size_gb": 6400, "class": "STANDARD"}},
+  {"external_id": "bq-analytics", "name": "analytics-warehouse", "type": "BigQueryDataset", "region": "US", "status": "active", "monthly_cost": 3100.0, "tags": {"env": "prod", "team": "data"}, "attributes": {"on_demand": true, "tb_scanned_30d": 41.0}},
+  {"external_id": "gce-idle-04", "name": "staging-runner", "type": "ComputeInstance", "region": "us-central1", "status": "running", "monthly_cost": 420.0, "tags": {"env": "staging"}, "attributes": {"machine_type": "e2-standard-4", "avg_cpu_pct": 2.0, "idle": true}}
+]

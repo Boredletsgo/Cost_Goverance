@@ -1,0 +1,6 @@
+[
+  {"external_id": "deploy/orders-api", "name": "orders-api", "type": "Deployment", "region": "cluster-prod", "status": "running", "monthly_cost": 980.0, "tags": {"namespace": "orders", "env": "prod"}, "attributes": {"replicas": 6, "cpu_request": "500m", "cpu_used": "70m", "mem_request_gi": 2, "mem_used_gi": 0.6, "overprovisioned": true}},
+  {"external_id": "deploy/recommender", "name": "recommender", "type": "Deployment", "region": "cluster-prod", "status": "crashloop", "monthly_cost": 410.0, "tags": {"namespace": "ml", "env": "prod"}, "attributes": {"replicas": 3, "restarts_1h": 22, "reason": "OOMKilled"}},
+  {"external_id": "deploy/legacy-cron", "name": "legacy-cron", "type": "Deployment", "region": "cluster-prod", "status": "running", "monthly_cost": 150.0, "tags": {"namespace": "default", "env": "prod"}, "attributes": {"replicas": 2, "cpu_used": "3m", "idle": true}},
+  {"external_id": "pvc/orders-data", "name": "orders-data", "type": "PersistentVolumeClaim", "region": "cluster-prod", "status": "bound", "monthly_cost": 120.0, "tags": {"namespace": "orders"}, "attributes": {"size_gi": 200, "used_gi": 38}}
+]

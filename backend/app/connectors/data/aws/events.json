@@ -1,0 +1,4 @@
+[
+  {"external_id": "aws-dep-551", "kind": "deploy", "severity": "info", "title": "api-service deploy build 5512", "description": "Rolling deploy of api-service to api-gateway-asg.", "resource_id": "i-0a1b2c", "occurred_at": "2026-06-13T18:20:00Z", "meta": {"build": 5512}},
+  {"external_id": "aws-alert-88", "kind": "alert", "severity": "low", "title": "RDS low connection utilization", "description": "analytics-pg averaging 14 of 800 max connections for 30 days.", "resource_id": "rds-analytics", "occurred_at": "2026-06-12T00:00:00Z", "meta": {"avg_conn": 14}}
+]

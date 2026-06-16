@@ -1,0 +1,4 @@
+[
+  {"external_id": "repo/orders-service", "name": "orders-service", "type": "Repository", "region": "github", "status": "active", "monthly_cost": 0.0, "tags": {"team": "orders"}, "attributes": {"default_branch": "main", "open_prs": 7, "deploys_7d": 11}},
+  {"external_id": "repo/platform-infra", "name": "platform-infra", "type": "Repository", "region": "github", "status": "active", "monthly_cost": 0.0, "tags": {"team": "platform"}, "attributes": {"default_branch": "main", "open_prs": 3, "deploys_7d": 4}}
+]

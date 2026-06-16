@@ -1,0 +1,10 @@
+[
+  {"external_id": "vm-app-prod-01", "name": "app-prod-01", "type": "VirtualMachine", "region": "eastus", "status": "running", "monthly_cost": 4320.0, "tags": {"env": "prod", "team": "platform"}, "attributes": {"size": "Standard_D4s_v5", "vcpu": 4, "memory_gb": 16, "avg_cpu_pct": 12.4}},
+  {"external_id": "vm-batch-02", "name": "batch-runner-02", "type": "VirtualMachine", "region": "eastus", "status": "running", "monthly_cost": 2160.0, "tags": {"env": "prod", "team": "data"}, "attributes": {"size": "Standard_D8s_v5", "vcpu": 8, "memory_gb": 32, "avg_cpu_pct": 4.1}},
+  {"external_id": "sql-orders-prod", "name": "orders-db", "type": "SqlDatabase", "region": "eastus", "status": "running", "monthly_cost": 2900.0, "tags": {"env": "prod", "team": "orders"}, "attributes": {"tier": "BusinessCritical", "dtu": 800, "storage_gb": 250}},
+  {"external_id": "sa-prod-data", "name": "prod-data-store", "type": "StorageAccount", "region": "eastus", "status": "active", "monthly_cost": 1200.0, "tags": {"env": "prod"}, "attributes": {"redundancy": "GRS", "used_gb": 4100}},
+  {"external_id": "disk-orphan-07", "name": "vm-old-07-osdisk", "type": "ManagedDisk", "region": "eastus", "status": "unattached", "monthly_cost": 64.0, "tags": {"env": "prod"}, "attributes": {"size_gb": 512, "sku": "Premium_LRS", "attached": false}},
+  {"external_id": "pip-unused-03", "name": "legacy-public-ip", "type": "PublicIPAddress", "region": "eastus", "status": "unassociated", "monthly_cost": 3.6, "tags": {}, "attributes": {"associated": false}},
+  {"external_id": "appsvc-web-prod", "name": "web-frontend", "type": "AppServicePlan", "region": "eastus", "status": "running", "monthly_cost": 730.0, "tags": {"env": "prod", "team": "web"}, "attributes": {"sku": "P2v3", "instances": 3, "avg_cpu_pct": 22.0}},
+  {"external_id": "snap-stale-12", "name": "db-snapshot-2025-12", "type": "Snapshot", "region": "eastus", "status": "active", "monthly_cost": 48.0, "tags": {}, "attributes": {"age_days": 190, "size_gb": 250}}
+]

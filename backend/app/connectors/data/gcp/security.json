@@ -1,0 +1,4 @@
+[
+  {"external_id": "find-gcp-01", "title": "BigQuery dataset using on-demand pricing at scale", "description": "analytics-warehouse scanned 41TB in 30 days on-demand; flat-rate slots would be cheaper.", "severity": "medium", "category": "cost-governance", "resource_id": "bq-analytics", "cvss": 0.0, "status": "open", "detected_at": "2026-06-14T10:00:00Z", "meta": {}},
+  {"external_id": "find-gcp-02", "title": "Service account key never rotated", "description": "ml-pipeline service account key is 280 days old.", "severity": "high", "category": "iam", "resource_id": "sa/ml-pipeline", "cvss": 7.2, "status": "open", "detected_at": "2026-06-10T06:00:00Z", "meta": {"key_age_days": 280}}
+]

@@ -1,0 +1,4 @@
+[
+  {"external_id": "gcp-chg-31", "kind": "change", "severity": "info", "title": "Analyst added unpartitioned BigQuery dashboard", "description": "A new Looker dashboard runs full-table scans on analytics-warehouse every refresh.", "resource_id": "bq-analytics", "occurred_at": "2026-06-13T12:00:00Z", "meta": {"refresh_min": 15}},
+  {"external_id": "gcp-alert-12", "kind": "alert", "severity": "medium", "title": "BigQuery on-demand spend rising", "description": "BigQuery scanned TB/day climbing since 06-13.", "resource_id": "bq-analytics", "occurred_at": "2026-06-14T09:00:00Z", "meta": {}}
+]

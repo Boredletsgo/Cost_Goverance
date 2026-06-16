@@ -1,0 +1,4 @@
+[
+  {"external_id": "find-k8s-01", "title": "Container running as root", "description": "orders-api pods run as UID 0 without securityContext restrictions.", "severity": "high", "category": "workload-hardening", "resource_id": "deploy/orders-api", "cvss": 7.0, "status": "open", "detected_at": "2026-06-12T09:00:00Z", "meta": {"control": "PSS restricted"}},
+  {"external_id": "find-k8s-02", "title": "No resource limits on legacy-cron", "description": "legacy-cron has no CPU/memory limits, risking noisy-neighbor impact.", "severity": "medium", "category": "workload-hardening", "resource_id": "deploy/legacy-cron", "cvss": 4.0, "status": "open", "detected_at": "2026-06-11T09:00:00Z", "meta": {}}
+]

@@ -1,0 +1,5 @@
+[
+  {"external_id": "gh-find-01", "title": "Dependabot: lodash prototype pollution", "description": "orders-service depends on lodash <4.17.21 (CVE-2021-23337).", "severity": "high", "category": "dependency", "resource_id": "repo/orders-service", "cvss": 7.2, "status": "open", "detected_at": "2026-06-10T00:00:00Z", "meta": {"cve": "CVE-2021-23337"}},
+  {"external_id": "gh-find-02", "title": "Code scanning: hardcoded secret in test fixture", "description": "A static API token was committed in platform-infra test fixtures.", "severity": "critical", "category": "secret", "resource_id": "repo/platform-infra", "cvss": 9.0, "status": "open", "detected_at": "2026-06-13T00:00:00Z", "meta": {}},
+  {"external_id": "gh-find-03", "title": "Workflow uses unpinned third-party action", "description": "CI uses a third-party GitHub Action referenced by mutable tag, not SHA.", "severity": "medium", "category": "supply-chain", "resource_id": "repo/platform-infra", "cvss": 5.0, "status": "open", "detected_at": "2026-06-09T00:00:00Z", "meta": {}}
+]

@@ -1,0 +1,4 @@
+[
+  {"external_id": "k8s-evt-901", "kind": "incident", "severity": "high", "title": "recommender pods OOMKilled in crashloop", "description": "recommender deployment in ml namespace restarting ~22x/hour with OOMKilled; memory limit 512Mi too low after model bump.", "resource_id": "deploy/recommender", "occurred_at": "2026-06-15T08:30:00Z", "meta": {"restarts": 22, "reason": "OOMKilled"}},
+  {"external_id": "k8s-evt-902", "kind": "change", "severity": "info", "title": "recommender image bump to v1.9", "description": "New model increased baseline memory footprint; limits not updated.", "resource_id": "deploy/recommender", "occurred_at": "2026-06-15T07:50:00Z", "meta": {"image": "recommender:v1.9"}}
+]
