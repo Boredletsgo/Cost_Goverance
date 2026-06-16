@@ -77,6 +77,29 @@ the LLM only narrates the facts — so results are reproducible and hallucinatio
 
 ## Quick start
 
+Pick whichever you prefer — both need **zero API keys** and use the built-in mock LLM.
+
+### Option A — One command, no Docker (recommended to try it fast)
+
+Uses a local **SQLite** database and the offline hashing embedder. No Postgres, no Redis.
+
+```bash
+# macOS / Linux
+./scripts/dev.sh
+```
+
+```powershell
+# Windows (PowerShell)
+./scripts/dev.ps1
+```
+
+The script creates the backend virtualenv, installs the **lite** dependency set,
+seeds a demo database, and starts both the backend and the frontend.
+
+### Option B — Full stack with Docker
+
+Runs PostgreSQL, Redis, the Celery worker/beat, backend, and frontend.
+
 ```bash
 # 1. Copy environment defaults (works out of the box, no keys required)
 cp .env.example .env
@@ -85,12 +108,17 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Then open:
+Then open (either option):
 - **Frontend dashboard** → http://localhost:5173
 - **API docs (Swagger)** → http://localhost:8000/docs
 
 On first boot the backend creates tables, ingests all mock connectors, builds the RAG
 index, and runs every agent to populate insights.
+
+> **Dependency note:** `requirements.txt` is the **lite** set and intentionally excludes
+> `sentence-transformers`/`torch` (~2 GB). InfraMind falls back to a deterministic hashing
+> embedder, so RAG works fully offline. For higher-quality semantic search:
+> `pip install -r requirements.txt -r requirements-ml.txt`.
 
 ---
 
@@ -175,17 +203,19 @@ Email uses SMTP if configured in `.env`, otherwise logs to the worker console.
 
 ---
 
-## Local development (without Docker)
+## Local development (manual, without Docker)
+
+The `scripts/dev.*` bootstrap does this for you, but here are the raw steps:
 
 ```bash
 # Backend
 cd backend
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements.txt                      # add -r requirements-ml.txt for ST embeddings
 python -m app.cli init-db
 python -m app.cli seed
 uvicorn app.main:app --reload
-# Worker (separate shell): celery -A app.worker.celery_app worker --beat -l info
+# Worker (separate shell, needs Redis): celery -A app.worker.celery_app worker --beat -l info
 
 # Frontend
 cd frontend
@@ -193,8 +223,12 @@ npm install
 npm run dev
 ```
 
-For local dev without Postgres/Redis, set in `.env`:
-`DATABASE_URL=sqlite:///./.data/inframind.db` (Celery still needs Redis).
+With no `.env` present, the backend defaults to `DATABASE_URL=sqlite:///./.data/inframind.db`
+and `AI_PROVIDER=mock`, so it runs offline out of the box. The Celery worker is **optional**
+and only needed for scheduled refresh + weekly email (it requires Redis); the same work can
+be triggered on demand via `POST /api/connectors/refresh` and `POST /api/agents/sweep`.
+
+For adding your own integration, see [docs/CONNECTORS.md](docs/CONNECTORS.md).
 
 ---
 
@@ -219,7 +253,12 @@ For local dev without Postgres/Redis, set in `.env`:
 .
 ├── docker-compose.yml
 ├── .env.example
+├── LICENSE  CONTRIBUTING.md
+├── scripts/              # dev.ps1 / dev.sh — one-command local bootstrap (no Docker)
+├── docs/                 # CONNECTORS.md — write-your-own-connector guide
 ├── backend/
+│   ├── requirements.txt          # lite deps (offline hashing embedder)
+│   ├── requirements-ml.txt       # optional sentence-transformers embeddings
 │   └── app/
 │       ├── main.py  cli.py  config.py  database.py  models.py  schemas.py  worker.py
 │       ├── connectors/   # BaseConnector + mock connectors + JSON datasets

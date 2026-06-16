@@ -22,8 +22,11 @@ google-generativeai==0.8.3
 httpx==0.27.2
 
 # Vector store + embeddings
+# NOTE: sentence-transformers (torch) is intentionally NOT here — it is heavy
+# (~2 GB) and optional. InfraMind uses a deterministic hashing embedder fallback
+# out of the box. For higher-quality semantic search, install the extra deps:
+#   pip install -r requirements-ml.txt
 chromadb==0.5.20
-sentence-transformers==3.3.1
 
 # Utilities
 tenacity==9.0.0

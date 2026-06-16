@@ -1,0 +1,9 @@
+# ---- InfraMind OPTIONAL ML dependencies ----
+# High-quality local embeddings for the RAG knowledge store.
+# Without these, InfraMind transparently falls back to a deterministic hashing
+# embedder, so the platform is fully functional offline with zero extra installs.
+#
+# Install with:  pip install -r requirements.txt -r requirements-ml.txt
+# Then set EMBEDDING_PROVIDER=local in your .env (already the default).
+
+sentence-transformers==3.3.1
