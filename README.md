@@ -161,6 +161,25 @@ class BaseConnector:
 Bundled mock connectors (**azure, aws, gcp, kubernetes, github**) load realistic JSON
 datasets from `backend/app/connectors/data/<name>/` — no cloud credentials required.
 
+### Go live on your own cloud
+
+Each connector runs in **mock** mode (sample data, the default) or **live** mode
+(real cloud APIs). Live connectors ship today for **Azure** and **AWS**:
+
+```bash
+cd backend
+pip install -r requirements.txt -r requirements-cloud.txt   # adds boto3 + azure-mgmt-*
+az login            # Azure   (or set AZURE_CLIENT_ID/SECRET/TENANT in .env)
+aws configure       # AWS     (or set AWS_ACCESS_KEY_ID/SECRET in .env)
+```
+
+Then open the **Setup** tab in the UI → flip a connector to **live** → **Test
+connection** → **Re-ingest data**. Live calls fall back to mock data on any failure,
+and credentials are read from your environment only (never stored).
+
+See **[docs/SETUP.md](docs/SETUP.md)** for required IAM/RBAC permissions and
+troubleshooting.
+
 **Add your own connector** in 3 steps:
 1. Subclass `BaseConnector` (or `JsonMockConnector`).
 2. Register it in `backend/app/connectors/registry.py`.
@@ -181,6 +200,9 @@ datasets from `backend/app/connectors/data/<name>/` — no cloud credentials req
 | GET | `/api/insights` | List/filter insights |
 | GET | `/api/connectors` | List connectors + capabilities |
 | POST | `/api/connectors/refresh` | Re-ingest connector data + reindex RAG |
+| GET | `/api/setup/status` | Per-connector mode, SDK + credential status |
+| POST | `/api/setup/connectors/{name}/mode` | Switch a connector between mock and live |
+| POST | `/api/setup/connectors/{name}/test` | Test a live cloud connection |
 | GET | `/api/knowledge/search?q=` | RAG semantic search |
 | POST | `/api/reports/generate` | Build & dispatch the executive report |
 
@@ -255,22 +277,23 @@ For adding your own integration, see [docs/CONNECTORS.md](docs/CONNECTORS.md).
 ├── .env.example
 ├── LICENSE  CONTRIBUTING.md
 ├── scripts/              # dev.ps1 / dev.sh — one-command local bootstrap (no Docker)
-├── docs/                 # CONNECTORS.md — write-your-own-connector guide
+├── docs/                 # CONNECTORS.md (write-your-own) + SETUP.md (go-live guide)
 ├── backend/
 │   ├── requirements.txt          # lite deps (offline hashing embedder)
 │   ├── requirements-ml.txt       # optional sentence-transformers embeddings
+│   ├── requirements-cloud.txt    # optional boto3 + azure-mgmt-* for live connectors
 │   └── app/
 │       ├── main.py  cli.py  config.py  database.py  models.py  schemas.py  worker.py
-│       ├── connectors/   # BaseConnector + mock connectors + JSON datasets
+│       ├── connectors/   # BaseConnector + mock/live connectors + JSON datasets
 │       ├── ai/           # provider abstraction (openai/gemini/ollama/mock) + embeddings
 │       ├── agents/       # 5 agents + LangGraph orchestrator
 │       ├── rag/          # ChromaDB store + ingestion
 │       ├── services/     # ingestion, analytics, insights, reports, email
 │       ├── tasks/        # Celery jobs
-│       └── api/routes/   # chat, agents, insights, connectors, knowledge, reports, health
+│       └── api/routes/   # chat, agents, insights, connectors, setup, knowledge, reports, health
 └── frontend/
     └── src/
-        ├── pages/        # Dashboard, Chat, Insights, Connectors, Knowledge, Reports
+        ├── pages/        # Dashboard, Chat, Insights, Connectors, Setup, Knowledge, Reports
         ├── components/   # shadcn/ui-style primitives + cards
         └── lib/          # API client, utils
 ```

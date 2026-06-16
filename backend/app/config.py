@@ -48,9 +48,38 @@ class Settings(BaseSettings):
     # Connectors
     enabled_connectors: str = "azure,aws,gcp,kubernetes,github"
 
+    # Per-connector data mode: "mock" (bundled sample data) or "live" (real cloud APIs).
+    # These are the *defaults*; the Setup page can override them at runtime.
+    azure_mode: str = "mock"
+    aws_mode: str = "mock"
+    gcp_mode: str = "mock"
+    kubernetes_mode: str = "mock"
+    github_mode: str = "mock"
+
+    # --- Azure credentials (live mode) ---
+    # If client_id/secret/tenant are set they are used; otherwise DefaultAzureCredential
+    # falls back to `az login`, managed identity, env vars, etc.
+    azure_subscription_id: str = ""
+    azure_tenant_id: str = ""
+    azure_client_id: str = ""
+    azure_client_secret: str = ""
+
+    # --- AWS credentials (live mode) ---
+    # If access keys are set they are used; otherwise boto3's default chain
+    # (shared profile / env / instance role) applies.
+    aws_region: str = "us-east-1"
+    aws_profile: str = ""
+    aws_access_key_id: str = ""
+    aws_secret_access_key: str = ""
+    aws_session_token: str = ""
+
     @property
     def connectors_list(self) -> List[str]:
         return [c.strip() for c in self.enabled_connectors.split(",") if c.strip()]
+
+    def connector_mode(self, name: str) -> str:
+        """Default data mode for a connector (overridable at runtime)."""
+        return getattr(self, f"{name}_mode", "mock") or "mock"
 
     @property
     def recipients_list(self) -> List[str]:

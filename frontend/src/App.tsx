@@ -3,17 +3,19 @@ import { Dashboard } from "./pages/Dashboard";
 import { Chat } from "./pages/Chat";
 import { Insights } from "./pages/Insights";
 import { Connectors } from "./pages/Connectors";
+import { Setup } from "./pages/Setup";
 import { Knowledge } from "./pages/Knowledge";
 import { Reports } from "./pages/Reports";
 import { api } from "./lib/api";
 import { cn } from "./lib/utils";
-import { Activity, Brain, Cloud, FileText, LayoutDashboard, Lightbulb, MessageSquare, Search } from "lucide-react";
+import { Activity, Brain, Cloud, FileText, LayoutDashboard, Lightbulb, MessageSquare, Plug, Search } from "lucide-react";
 
 const TABS = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, el: <Dashboard /> },
   { id: "chat", label: "Ask InfraMind", icon: MessageSquare, el: <Chat /> },
   { id: "insights", label: "Insights", icon: Lightbulb, el: <Insights /> },
   { id: "connectors", label: "Connectors", icon: Cloud, el: <Connectors /> },
+  { id: "setup", label: "Setup", icon: Plug, el: <Setup /> },
   { id: "knowledge", label: "Knowledge", icon: Search, el: <Knowledge /> },
   { id: "reports", label: "Reports", icon: FileText, el: <Reports /> },
 ];

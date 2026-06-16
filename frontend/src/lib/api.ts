@@ -55,6 +55,23 @@ export interface ConnectorInfo {
   description: string;
 }
 
+export interface ConnectorSetupStatus {
+  name: string;
+  enabled: boolean;
+  capabilities: string[];
+  description: string;
+  mode: string;
+  requested_mode: string;
+  has_live: boolean;
+  sdk_available: boolean;
+  credentials_detected: boolean;
+}
+
+export interface TestResult {
+  ok: boolean;
+  detail: string;
+}
+
 export interface AgentInfo {
   name: string;
   title: string;
@@ -77,6 +94,14 @@ export const api = {
   },
   connectors: () => request<ConnectorInfo[]>("/connectors"),
   refreshConnectors: () => request<{ status: string }>("/connectors/refresh", { method: "POST" }),
+  setupStatus: () => request<{ connectors: ConnectorSetupStatus[] }>("/setup/status"),
+  setConnectorMode: (name: string, mode: string) =>
+    request<ConnectorSetupStatus>(`/setup/connectors/${name}/mode`, {
+      method: "POST",
+      body: JSON.stringify({ mode }),
+    }),
+  testConnector: (name: string) =>
+    request<TestResult>(`/setup/connectors/${name}/test`, { method: "POST" }),
   searchKnowledge: (q: string) =>
     request<{ query: string; results: { text: string; metadata: Record<string, unknown>; score: number }[]; total_docs: number }>(
       `/knowledge/search?q=${encodeURIComponent(q)}`
